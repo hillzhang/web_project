@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="shoppingcart" />
+
+	<package name="search" namespace="/search" extends="struts-default">
+		<action name="loadqueryresult" class="controller.ProcessAction"
+			method="loadquery">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+
+		<action name="showProductsDojo" class="controller.ProcessAction"
+			method="show">
+			<result name="success">/jsp/result.jsp</result>
+			<result name="empty">/jsp/noqueryresult.jsp</result>
+		</action>
+
+
+		<action name="addToCartDojo" class="controller.ProcessAction"
+			method="addDojo">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+		<action name="removefromCartDojo" class="controller.ProcessAction"
+			method="removeDojo">
+			<result name="no_cart">/jsp/cart_partial_empty.jsp</result>
+			<result name="success">/jsp/cart_partial.jsp</result>
+
+		</action>
+
+		<action name="loadCart" class="controller.ProcessAction" method="loadCart">
+			<result name="no_cart">/jsp/cart_partial_empty.jsp</result>
+			<result name="success">/jsp/cart_partial.jsp</result>
+		</action>
+		<action name="checkout" class="controller.ProcessAction" method="checkout">
+			<result name="success">/jsp/checkout.jsp</result>
+			<result name="noform">/jsp/noqueryresult.jsp</result>
+		</action>
+		<action name="compute" class="controller.ProcessAction" method="compute">
+			<!-- <result name="success">/jsp/order.jsp</result>
+			<result name="invalidaddress">/index.jsp</result> -->
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+			<result name="invalidaddress" type="httpheader">
+				<param name="status">400</param>
+			</result>
+
+		</action>
+		<action name="logout" class="controller.ProcessAction" method="logout">
+			<result name="success">/jsp/logout.jsp</result>
+		</action>
+		<action name="addressinvalid" class="controller.ProcessAction" method="error">
+			<result name="success">/jsp/adderror.jsp</result>
+		</action>
+		<action name="showorder" class="controller.ProcessAction" method="showorder">
+			<result name="success">/jsp/order.jsp</result>
+		</action>
+		
+		<action name="insert" class="controller.ProcessAction" method="adddb">
+			<result name="success">/jsp/end.jsp</result>
+		</action>
+		<action name="loadorder" class="controller.ProcessAction" method="loadorder">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+
+		</action>
+		<action name="loadadmin" class="controller.ProcessAction" method="loadadmin">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+
+		</action>
+		<action name="discard" class="controller.ProcessAction" method="discard">
+			<result name="success">/index.jsp</result>
+
+		</action>
+		<action name="loadform" class="controller.ProcessAction" method="loadform">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+		<action name="loaddetails" class="controller.ProcessAction" method="loaddetails">
+			<result name="success" type="httpheader">
+				<param name="status">200</param>
+			</result>
+		</action>
+		<action name="showcustomer" class="controller.ProcessAction"
+			method="showcustomer">
+			<result name="success">/jsp/customerorder.jsp</result>
+			<result name="empty">/jsp/empty.jsp</result>
+		</action>
+		<action name="showadmin" class="controller.ProcessAction" method="showadmin">
+			<result name="success">/jsp/adminorder.jsp</result>
+			<result name="empty">/jsp/noqueryresult.jsp</result>
+		</action>
+		<action name="updateorder" class="controller.ProcessAction"
+			method="updateorder">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="showorderdetails" class="controller.ProcessAction" method="showorderdetails">
+			<result name="success">/jsp/orderdetails.jsp</result>
+		</action>
+		<action name="shownewly" class="controller.ProcessAction" method="shownewly">
+			<result name="success">/newlyorder.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,19 @@
+<Context path="/shoppingcart">
+ <Resource name="jdbc/shoppingcart"
+              type="javax.sql.DataSource"
+              username="root"
+              password="basser"
+              driverClassName="com.mysql.jdbc.Driver"
+              maxIdle="2"
+              maxWait="5000"
+              validationQuery="SELECT * FROM users"
+              url="jdbc:mysql://localhost:3306/comp5347_development"
+              maxActive="4" 
+              poolPreparedStatements="true"
+              />
+<Realm className="org.apache.catalina.realm.DataSourceRealm"
+localDataSource="true" dataSourceName="jdbc/shoppingcart"
+userTable="users" userNameCol="user_name" userCredCol="user_pass"
+userRoleTable="user_roles" roleNameCol="role_name"  digest="md5"
+      />
+   </Context>
